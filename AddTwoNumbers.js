@@ -17,6 +17,21 @@ const addTwoNumbers = function(l1, l2) {
     console.log("In add two numbers");
     console.log("L1", l1);
     console.log("L2", l2);
+    let numL1 = 0;
+    let runner = l1;
+    let multiplier = 1;
+    let arrayL1 = [];
+    while (runner !== null) {
+        arrayL1.push(runner.val);
+        runner = runner.next;
+    }
+    console.log("arrayL1:", arrayL1);
+
+    for (let idx=arrayL1.length-1; idx>=0; idx--) {
+        numL1 = numL1 + ( arrayL1[idx] * multiplier );
+        multiplier = multiplier * 10;
+    }
+    console.log("numL1", numL1);
 };
 
 console.log("******************************");
