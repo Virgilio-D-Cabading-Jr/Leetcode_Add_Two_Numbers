@@ -14,9 +14,9 @@ function ListNode(val, next) {
  * @return {ListNode}
  */
 const addTwoNumbers = function(l1, l2) {
-    console.log("In add two numbers");
-    console.log("L1", l1);
-    console.log("L2", l2);
+    // console.log("In add two numbers");
+    // console.log("L1", l1);
+    // console.log("L2", l2);
     let numL1 = 0;
     let runner = l1;
     let multiplier = 1;
@@ -24,36 +24,28 @@ const addTwoNumbers = function(l1, l2) {
 
     // Retrieve l1 number
     while (runner !== null) {
-        arrayL1.push(runner.val);
+        numL1 = numL1 + ( runner.val * multiplier );
+        multiplier = multiplier * 10;
         runner = runner.next;
     }
-    // console.log("arrayL1:", arrayL1);
-
-    for (let idx=arrayL1.length-1; idx>=0; idx--) {
-        numL1 = numL1 + ( arrayL1[idx] * multiplier );
-        multiplier = multiplier * 10;
-    }
-    console.log("numL1", numL1);
 
     let numL2 = 0;
     runner = l2;
-    console.log("runner", runner);
     multiplier = 1;
-    let arrayL2 = [];
 
     // Retrieve L2 number
     while (runner !== null) {
-        arrayL2.push(runner.val);
+        numL2 = numL2 + ( runner.val * multiplier );
+        multiplier = multiplier * 10;
         runner = runner.next;
     }
-    console.log("arrayL2", arrayL2)
 
-    for (let idx=arrayL2.length-1; idx>=0; idx--) {
-        numL2 = numL2 + ( arrayL2[idx] * multiplier );
-        multiplier = multiplier * 10;
-        console.log("numL2", numL2, " || arrayL2[idx]", arrayL2[idx])
-    }
-    console.log("numL2", numL2);
+    // console.log("L1", numL1, "numL2", numL2);
+    let sum = (numL1 + numL2).toString();
+    console.log("Sum:", typeof(sum) );
+    
+
+
 };
 
 console.log("******************************");
