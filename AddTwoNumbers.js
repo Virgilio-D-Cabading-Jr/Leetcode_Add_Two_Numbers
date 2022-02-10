@@ -8,24 +8,55 @@ function ListNode(val, next) {
     this.next = (next===undefined ? null : next)
 }
 
+const printListNode (list) {
+    let runner = list;
+    let output = "ListNode:"
+    while (runner) {
+        output = output + runner.val;
+        runner = runner.next
+    }
+    return output;
+}
+
 /**
  * @param {ListNode} l1
  * @param {ListNode} l2
  * @return {ListNode}
  */
 const addTwoNumbers = function(l1, l2) {
-    let output = null;
+    let output = new ListNode(0, null);
     let list1 = l1, list2=l2;
+    let runner = output;
     let carry = 0;
-    // console.log (list1, list2)
+    // Iterate through Lists until get to the end of one of them
     while ( (list1 !== null) && (list2 !== null)) {
         let sum = carry + list1.val + list2.val;
-        output = new ListNode( sum%10, output );
+        runner.next = new ListNode( sum%10, null );
+        runner = runner.next;
         carry = Math.floor( sum/10 );
         list1 = list1.next;
         list2 = list2.next;
-        console.log("output", output);
+        console.log(printListNode(output.next));
     }
+
+    // Find the none empty list
+
+    if (list1 !== null) {
+        while (list1 !== null) {
+            runner.next = new ListNode( list1.val, null );
+            runner = runner.next;
+            list1 = list1.next;
+            console.log(printListNode(output.next));
+        }
+    } else {
+        while (list2 !== null) {
+            runner.next = new ListNode( list2.val, null );
+            runner = runner.next;
+            list2 = list2.next;
+            console.log(printListNode(output.next));
+        }
+    }
+    return output.next;
 };
 
 console.log("******************************");
