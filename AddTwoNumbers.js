@@ -16,18 +16,15 @@ function ListNode(val, next) {
 const addTwoNumbers = function(l1, l2) {
     let numL1 = ""
     let runner = l1;
-    // let multiplier = 1;
 
     // Retrieve l1 number
     while (runner !== null) {
         numL1 = runner.val + numL1;
-        // multiplier = multiplier * 10;
         runner = runner.next;
     }
 
     let numL2 = "";
     runner = l2;
-    // multiplier = 1;
 
     // Retrieve L2 number
     while (runner !== null) {
@@ -37,12 +34,12 @@ const addTwoNumbers = function(l1, l2) {
     }
 
     // Get the sum of the two numbers then convert into a SLL
-    let sum = (parseInt(numL1) + parseInt(numL2)).toString();
+    let sum = BigInt(parseInt(numL1) + parseInt(numL2))).toString();
     console.log("sum", sum);
     let output = null;
-    for ( let idx=0; idx<sum.length; idx++ ) {
+    for ( let idx=0; idx<sum.length-1; idx++ ) {
         output = new ListNode( parseInt(sum[idx]), output );
-        console.log(idx,output);
+        // console.log(idx,output);
     }
     return output;
 };
