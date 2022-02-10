@@ -37,22 +37,28 @@ const addTwoNumbers = function(l1, l2) {
         carry = Math.floor( sum/10 );
         list1 = list1.next;
         list2 = list2.next;
-        console.log(printListNode(output.next));
     }
 
     // Find the none empty list and iterate through it
     if (list1 !== null) {
         while (list1 !== null) {
-            runner.next = new ListNode( list1.val, null );
+            let sum = carry + list1.val;
+            runner.next = new ListNode( sum%10, null );
             runner = runner.next;
             list1 = list1.next;
+            carry = Math.floor( sum/10 );
         }
     } else {
         while (list2 !== null) {
-            runner.next = new ListNode( list2.val, null );
+            let sum = carry + list2.val;
+            runner.next = new ListNode( sum%10, null );
             runner = runner.next;
             list2 = list2.next;
+            carry = Math.floor( sum/10 );
         }
+    }
+    if (carry!== 0) {
+        runner.next = new ListNode( carry, null );
     }
     return output.next;
 };
@@ -60,68 +66,20 @@ const addTwoNumbers = function(l1, l2) {
 console.log("******************************");
 console.log("Add Two Numbers\n");
 
-let listNode1A = new ListNode(1);
-let listNode1B = new ListNode(0, listNode1A);
-let listNode1C = new ListNode(0, listNode1B);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(0, listNode1C);
-listNode1C = new ListNode(3, listNode1C);
-listNode1C = new ListNode(5, listNode1C);
-listNode1C = new ListNode(6, listNode1C);
+let listNode1A = new ListNode(9);
+let listNode1B = new ListNode(9, listNode1A);
+let listNode1C = new ListNode(9, listNode1B);
+listNode1C = new ListNode(9, listNode1C);
+listNode1C = new ListNode(9, listNode1C);
+listNode1C = new ListNode(9, listNode1C);
+
+listNode1C = new ListNode(9, listNode1C);
 // console.log(listNode1C);
 
-let listNode2A = new ListNode(4);
-let listNode2B = new ListNode(6, listNode2A);
-let listNode2C = new ListNode(5, listNode2B);
+let listNode2A = new ListNode(9);
+let listNode2B = new ListNode(9, listNode2A);
+let listNode2C = new ListNode(9, listNode2B);
+listNode2C = new ListNode(9, listNode2C);
 // console.log(listNode2C);
 
 console.log(printListNode(addTwoNumbers(listNode1C, listNode2C)));
